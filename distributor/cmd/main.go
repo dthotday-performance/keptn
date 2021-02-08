@@ -30,10 +30,16 @@ import (
 	"sync"
 	"time"
 
+	"github.com/keptn/go-utils/pkg/lib/v0_2_0"
+
 	cenats "github.com/cloudevents/sdk-go/protocol/nats/v2"
 	cloudevents "github.com/cloudevents/sdk-go/v2"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/nats-io/nats.go"
+
+	keptnmodels "github.com/keptn/go-utils/pkg/api/models"
+	keptnapi "github.com/keptn/go-utils/pkg/api/utils"
+	"github.com/keptn/keptn/distributor/pkg/lib"
 )
 
 type envConfig struct {
@@ -49,6 +55,9 @@ type envConfig struct {
 	PubSubRecipient     string `envconfig:"PUBSUB_RECIPIENT" default:"http://127.0.0.1"`
 	PubSubRecipientPort string `envconfig:"PUBSUB_RECIPIENT_PORT" default:"8080"`
 	PubSubRecipientPath string `envconfig:"PUBSUB_RECIPIENT_PATH" default:""`
+	ProjectFilter       string `envconfig:"PROJECT_FILTER" default:""`
+	StageFilter         string `envconfig:"STAGE_FILTER" default:""`
+	ServiceFilter       string `envconfig:"SERVICE_FILTER" default:""`
 }
 
 var httpClient cloudevents.Client
