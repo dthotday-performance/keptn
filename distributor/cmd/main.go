@@ -22,21 +22,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"net/url"
-
-	"github.com/keptn/go-utils/pkg/lib/v0_2_0"
-
 	"net/http"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
-
-	"github.com/keptn/keptn/distributor/pkg/lib"
-
-	keptnmodels "github.com/keptn/go-utils/pkg/api/models"
-	keptnapi "github.com/keptn/go-utils/pkg/api/utils"
 
 	cenats "github.com/cloudevents/sdk-go/protocol/nats/v2"
 	cloudevents "github.com/cloudevents/sdk-go/v2"
@@ -57,9 +49,6 @@ type envConfig struct {
 	PubSubRecipient     string `envconfig:"PUBSUB_RECIPIENT" default:"http://127.0.0.1"`
 	PubSubRecipientPort string `envconfig:"PUBSUB_RECIPIENT_PORT" default:"8080"`
 	PubSubRecipientPath string `envconfig:"PUBSUB_RECIPIENT_PATH" default:""`
-	ProjectFilter       string `envconfig:"PROJECT_FILTER" default:""`
-	StageFilter         string `envconfig:"STAGE_FILTER" default:""`
-	ServiceFilter       string `envconfig:"SERVICE_FILTER" default:""`
 }
 
 var httpClient cloudevents.Client
@@ -239,7 +228,7 @@ func APIProxyHandler(rw http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	fmt.Println(fmt.Sprintf("Received response from API: Status=%d, Payload=%s", resp.StatusCode, string(respBytes)))
+	fmt.Println(fmt.Sprintf("Received response from API: Status=%d", resp.StatusCode))
 	if _, err := rw.Write(respBytes); err != nil {
 		fmt.Println("could not send response from API: " + err.Error())
 	}
