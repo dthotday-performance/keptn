@@ -227,13 +227,14 @@ func APIProxyHandler(rw http.ResponseWriter, req *http.Request) {
 		rw.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	rw.WriteHeader(resp.StatusCode)
 
 	for name, headers := range resp.Header {
 		for _, h := range headers {
 			rw.Header().Set(name, h)
 		}
 	}
+
+	rw.WriteHeader(resp.StatusCode)
 
 	defer resp.Body.Close()
 	respBytes, err := ioutil.ReadAll(resp.Body)
