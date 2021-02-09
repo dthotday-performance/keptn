@@ -34,7 +34,8 @@ spec:
       - ip: "192.168.3.91"
         hostnames:
         - "frontend.keptnorders-staging.kiab.pcjeffint.com"
-      - ip: "192.168.3.91"  
+      - ip: "192.168.3.91"
+        hostnames:
         - "frontend.keptnorders-production.kiab.pcjeffint.com"
       containers:
       - name: jmeter-service
