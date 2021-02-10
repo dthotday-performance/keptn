@@ -64,7 +64,7 @@ spec:
         - name: EVENTBROKER
           value: 'http://event-broker/keptn'
         - name: DEBUG_KEEP_TEMP_FILES
-          value: "false"
+          value: "true"
       - name: distributor
         image: keptn/distributor:0.7.3
         livenessProbe:
