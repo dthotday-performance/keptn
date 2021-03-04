@@ -29,6 +29,19 @@ spec:
         app.kubernetes.io/version: develop
     spec:
       serviceAccountName: keptn-configuration-service
+      hostAliases:
+        - ip: "192.168.3.91"
+          hostnames:
+          - "kiab.pcjeffint.com"
+        - ip: "192.168.3.91"
+          hostnames:
+          - "git.kiab.pcjeffint.com"
+        - ip: "192.168.3.91"
+          hostnames:
+          - "frontend.keptnorders-staging.kiab.pcjeffint.com"
+        - ip: "192.168.3.91"
+          hostnames:
+          - "frontend.keptnorders-production.kiab.pcjeffint.com"      
       containers:
       - name: configuration-service
         image: keptn/configuration-service:latest
