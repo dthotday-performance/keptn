@@ -41,7 +41,10 @@ spec:
           - "frontend.keptnorders-staging.kiab.pcjeffint.com"
         - ip: "192.168.3.91"
           hostnames:
-          - "frontend.keptnorders-production.kiab.pcjeffint.com"      
+          - "frontend.keptnorders-production.kiab.pcjeffint.com"   
+        - ip: "192.168.3.91"
+          hostnames:
+          - "unleash.unleash-dev.kiab.pcjeffint.com"    
       containers:
       - name: configuration-service
         image: keptn/configuration-service:latest
